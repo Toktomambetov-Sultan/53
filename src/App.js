@@ -15,12 +15,15 @@ function App() {
       id: 2,
     }
   ]);
+  let inputValue="";
+  const changeValue=(event)=>{
+    inputValue=event.target.value;
+  }
   const addRecord = () => {
-    const value = document.getElementById("formInput").value;
-    if (value) {
+    if (inputValue) {
       const recordsCopy = [...records];
       recordsCopy.unshift({
-        message: value,
+        message: inputValue,
         id: new Date().getTime(),
       })
       setRecords(recordsCopy);
@@ -35,7 +38,7 @@ function App() {
 
   return (
     <div>
-      <AppForm onHeaderClick={addRecord} />
+      <AppForm onHeaderClick={addRecord} changeValue={changeValue} />
       <div className='container' >
         {
           records.map((record) => (
