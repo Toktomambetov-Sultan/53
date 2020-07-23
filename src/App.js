@@ -8,10 +8,12 @@ function App() {
   const [records, setRecords] = useState([
     {
       message: "Купить молоко.",
+      isDone: false,
       id: 1,
     },
     {
       message: "выкинуть мусор.",
+      isDone: false,
       id: 2,
     }
   ]);
@@ -29,6 +31,15 @@ function App() {
       setRecords(recordsCopy);
     }
   }
+  const changeCheck=(event,id)=>{
+    const index = records.findIndex(record=> record.id===id);
+    const recordsCopy=[...records];
+    const recordCopy={...recordsCopy[index]};
+    console.log(recordCopy.isDone);
+    recordCopy.isDone= !recordCopy.isDone;
+    recordsCopy[index]=recordCopy;
+    setRecords(recordsCopy);
+  }
   const deleteRecord=(id)=>{
     const index = records.findIndex(record=> record.id===id);
     const recordsCopy= [...records];
@@ -42,7 +53,13 @@ function App() {
       <div className='container' >
         {
           records.map((record) => (
-            <Record key={record.id} todo={record.message} deleteRecord={()=>deleteRecord(record.id)} />
+            <Record 
+            key={record.id} 
+            todo={record.message} 
+            deleteRecord={()=>deleteRecord(record.id)}
+            changeCheck={event=>changeCheck(event,record.id)}
+            isDone={record.isDone} 
+            />
           ))
         }
       </div>

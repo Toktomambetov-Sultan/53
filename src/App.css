@@ -32,7 +32,7 @@
 .record{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   background-color: rgb(0, 109, 172);
   padding: 10px 20px 5px 10px;
   border-bottom: 10px solid #ccc;
@@ -56,4 +56,26 @@
   padding: 0;
   font-size: 24px;
   color: #fff;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.checkbox{
+  display: none;
+}
+.ans{
+  height: 100%;
+  font-size: 30px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+.isDone{
+  color: rgb(0, 255, 0);
+}
+.label{
+  margin-right: 5px;
+}
+.isNotDone{
+  color: red;
 }
